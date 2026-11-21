@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright School</title>
+    <link rel="stylesheet" href="sytle.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">BRIGHT SCHOOL</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#programs">Programs</a>
+            <a href="#contact">Contact</a>
+            <a href="login.html">Login</a>
+            <a class="admin-only" href="admin.html" hidden>Admin</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="report.html">Report</a>
+        </nav>
+
+        <button id="languageBtn">Afaan Oromo</button>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 id="welcome">
+                Welcome to Bright School
+            </h1>
+
+            <p>
+                Quality Education for a Brighter Future.
+                Barnoota qulqullina qabu egeree ifa ta'eef.
+            </p>
+
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About Our School</h2>
+        <p>
+            Bright School provides quality education
+            for Primary and Secondary students.
+        </p>
+    </section>
+    <section class="registration" id="registration">
+    <h2>Student Registration</h2>
+
+    <form id="studentForm">
+
+        <input type="text" id="studentId"
+        placeholder="Student ID" required>
+
+        <input type="text" id="studentName"
+        placeholder="Full Name" required>
+
+        <select id="gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <input type="date" id="dob" required>
+
+        <select id="classLevel" required>
+            <option value="">Select Class Level</option>
+            <option value="Primary">Primary School</option>
+            <option value="Secondary">Secondary School</option>
+        </select>
+
+        <select id="grade" required>
+            <option value="">Select Grade</option>
+            <option value="Grade 1">Grade 1</option>
+            <option value="Grade 2">Grade 2</option>
+            <option value="Grade 3">Grade 3</option>
+            <option value="Grade 4">Grade 4</option>
+            <option value="Grade 5">Grade 5</option>
+            <option value="Grade 6">Grade 6</option>
+            <option value="Grade 7">Grade 7</option>
+            <option value="Grade 8">Grade 8</option>
+            <option value="Grade 9">Grade 9</option>
+            <option value="Grade 10">Grade 10</option>
+            <option value="Grade 11">Grade 11</option>
+            <option value="Grade 12">Grade 12</option>
+        </select>
+
+        <input type="text" id="parentName"
+        placeholder="Parent Name" required>
+
+        <input type="tel" id="phone"
+        placeholder="Phone Number" required>
+
+        <input type="text" id="address"
+        placeholder="Address" required>
+
+        <button type="submit">Register Student</button>
+    </form>
+
+    <h2>Registered Students</h2>
+    <div id="studentList"></div>
+</section>
+<input
+    type="text"
+    id="searchStudent"
+    placeholder="Search by Student Name or ID"
+>
+
+    <section class="programs" id="programs">
+        <h2>Our Education Programs</h2>
+
+        <div class="cards">
+            <div class="card grade-card" data-class-level="Primary" role="button" tabindex="0" aria-label="Choose Primary School grades">
+                <h3>Primary School</h3>
+                <p>Grade 1 - Grade 8</p>
+                <div id="primaryRoster" class="class-roster" aria-live="polite"></div>
+            </div>
+
+            <div class="card grade-card" data-class-level="Secondary" role="button" tabindex="0" aria-label="Choose Secondary School grades">
+                <h3>Secondary School</h3>
+                <p>Grade 9 - Grade 12</p>
+                <div id="secondaryRoster" class="class-roster" aria-live="polite"></div>
+            </div>
+        </div>
+        <div id="gradeChoices" class="grade-choices" aria-live="polite"></div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>Bright School</p>
+        <p>
+            <strong>Ethio Telecom (Tele):</strong>
+            <a class="contact-phone" id="teleContact" href="tel:+251900000000">+251 900 000 000</a>
+        </p>
+        <p>
+            <strong>Safaricom (Saf):</strong>
+            <a class="contact-phone" id="safContact" href="tel:0970093888">0970093888</a>
+        </p>
+        <p>
+            Emergency:
+            <a class="contact-phone" id="emergencyContact" href="tel:0715588785">0715588785</a>
+        </p>
+    </section>
+
+    <footer>
+        <p>© 2026 Bright School. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 7%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #3c1683;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #2a1683;
+}
+
+#languageBtn {
+    background: #628316;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 480px;
+    background: linear-gradient(
+        120deg,
+        #495b07,
+        #4328a4
+    );
+    display: flex;
+    align-items: center;
+    padding: 60px 7%;
+    color: rgb(255, 255, 255);
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: rgb(255, 255, 255);
+    color: #16834a;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #e8f5ec;
+}
+
+/* ABOUT */
+.about,
+.programs,
+.contact {
+    padding: 70px 7%;
+    text-align: center;
+}
+
+h2 {
+    color: #16834a;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.about p,
+.contact p {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.contact-phone {
+    color: #16834a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact-phone:hover {
+    text-decoration: underline;
+}
+
+/* PROGRAMS */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #f1faf4;
+    padding: 35px;
+    border-radius: 12px;
+    width: 280px;
+    border-bottom: 4px solid #16834a;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.card h3 {
+    color: #16834a;
+    margin-bottom: 15px;
+}
+
+.grade-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grade-card:hover,
+.grade-card:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(22, 131, 74, 0.18);
+    outline: 2px solid #16834a;
+    outline-offset: 3px;
+}
+
+.class-roster {
+    margin-top: 20px;
+    text-align: left;
+    cursor: default;
+}
+
+.roster-grade {
+    padding-top: 12px;
+    border-top: 1px solid #dce9e1;
+    margin-top: 12px;
+}
+
+.roster-grade h4 {
+    color: #075b32;
+    margin-bottom: 6px;
+}
+
+.roster-grade ul {
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+.roster-empty {
+    color: #666;
+    font-size: 14px;
+}
+
+.grade-choices {
+    max-width: 650px;
+    margin: 0 auto;
+    display: none;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.grade-choices.visible {
+    display: flex;
+    margin-top: 25px;
+}
+
+.grade-choice {
+    min-width: 110px;
+    background: white;
+    color: #16834a;
+    border: 2px solid #16834a;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.grade-choice:hover,
+.grade-choice.selected,
+.grade-choice:focus {
+    background: #16834a;
+    color: white;
+}
+
+/* FOOTER */
+footer {
+    background: #075b32;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        min-height: 380px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* STUDENT REGISTRATION */
+
+.registration {
+    padding: 70px 7%;
+    background: #f1faf4;
+    text-align: center;
+}
+
+#studentForm {
+    max-width: 650px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: grid;
+    gap: 15px;
+}
+
+#studentForm input,
+#studentForm select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+#studentForm button {
+    background: #16834a;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#studentForm button:hover {
+    background: #075b32;
+}
+
+#studentList {
+    max-width: 650px;
+    margin: 20px auto 0;
+    display: grid;
+    gap: 12px;
+}
+
+#studentList div {
+    background: white;
+    border-left: 4px solid #16834a;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: left;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+#studentList h3 {
+    color: #16834a;
+    margin-bottom: 8px;
+}
+
+#studentList p {
+    line-height: 1.5;
+}
+
+/* LOGIN, ADMIN, AND REPORT PAGES */
+.system-page {
+    min-height: 100vh;
+    background: #f1faf4;
+}
+
+.system-main {
+    width: min(1100px, 86%);
+    margin: 40px auto 60px;
+}
+
+.system-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.login-panel {
+    max-width: 480px;
+    margin: 40px auto;
+}
+
+.login-panel form,
+.admin-actions {
+    display: grid;
+    gap: 15px;
+}
+
+.login-panel input,
+.login-panel select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.system-button {
+    background: #16834a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 13px 18px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.system-button:hover {
+    background: #075b32;
+}
+
+.system-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.system-table th,
+.system-table td {
+    border: 1px solid #dce9e1;
+    padding: 12px;
+    text-align: left;
+}
+
+.system-table th {
+    background: #16834a;
+    color: white;
+}
+
+.report-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.report-card {
+    background: #f1faf4;
+    border-bottom: 4px solid #16834a;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.report-card strong {
+    display: block;
+    color: #16834a;
+    font-size: 30px;
+}
+
+.back-link {
+    color: #16834a;
+    font-weight: bold;
+}
+
+#dashboardTable {
+    margin-top: 25px;
+}
+
+.admin-user-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #dce9e1;
+}
+
+.admin-user-row .system-button {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+const languageBtn = document.getElementById("languageBtn");
+const studentForm = document.getElementById("studentForm");
+const studentList = document.getElementById("studentList");
+const classLevel = document.getElementById("classLevel");
+const gradeSelect = document.getElementById("grade");
+const gradeChoices = document.getElementById("gradeChoices");
+
+function loadContactNumbers() {
+    const defaults = {
+        tele: "+251 900 000 000",
+        saf: "0970093888",
+        emergency: "0715588785"
+    };
+    let contacts = defaults;
+
+    try {
+        contacts = { ...defaults, ...JSON.parse(localStorage.getItem("brightContacts")) };
+    } catch (error) {
+        contacts = defaults;
+    }
+
+    const setContact = (elementId, value) => {
+        const link = document.getElementById(elementId);
+        if (!link) return;
+        link.textContent = value;
+        link.href = `tel:${value.replace(/[\s()-]/g, "")}`;
+    };
+
+    setContact("teleContact", contacts.tele);
+    setContact("safContact", contacts.saf);
+    setContact("emergencyContact", contacts.emergency);
+}
+
+loadContactNumbers();
+
+if (classLevel && gradeSelect) {
+    function renderGradeChoices(grades) {
+        if (!gradeChoices) return;
+
+        gradeChoices.innerHTML = "";
+        gradeChoices.classList.toggle("visible", grades.length > 0);
+        grades.forEach((grade) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "grade-choice";
+            button.textContent = grade;
+            button.addEventListener("click", () => {
+                gradeSelect.value = grade;
+                gradeChoices.querySelectorAll(".grade-choice").forEach((choice) => {
+                    choice.classList.remove("selected");
+                });
+                button.classList.add("selected");
+                displayClassRosters(classLevel.value, grade);
+            });
+            gradeChoices.appendChild(button);
+        });
+    }
+
+    function updateGradeChoices() {
+        const primaryGrades = ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", "Grade 8"];
+        const secondaryGrades = ["Grade 9", "Grade 10", "Grade 11", "Grade 12"];
+        const grades = classLevel.value === "Primary"
+            ? primaryGrades
+            : classLevel.value === "Secondary"
+                ? secondaryGrades
+                : [];
+
+        gradeSelect.innerHTML = "";
+
+        if (grades.length === 0) {
+            gradeSelect.disabled = false;
+            gradeSelect.innerHTML = "";
+            gradeSelect.add(new Option("Select Grade", ""));
+            ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", "Grade 8", "Grade 9", "Grade 10", "Grade 11", "Grade 12"]
+                .forEach((grade) => gradeSelect.add(new Option(grade, grade)));
+            renderGradeChoices([]);
+            return;
+        }
+
+        gradeSelect.disabled = false;
+        gradeSelect.add(new Option("Select Grade", ""));
+        grades.forEach((grade) => gradeSelect.add(new Option(grade, grade)));
+        renderGradeChoices(grades);
+        displayClassRosters();
+    }
+
+    classLevel.addEventListener("change", updateGradeChoices);
+    gradeSelect.addEventListener("change", () => {
+        displayClassRosters(classLevel.value, gradeSelect.value);
+    });
+
+    document.querySelectorAll(".grade-card").forEach((card) => {
+        const chooseGradeLevel = () => {
+            classLevel.value = card.dataset.classLevel;
+            updateGradeChoices();
+
+            document.getElementById("registration").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+            gradeSelect.focus();
+        };
+
+        card.addEventListener("click", chooseGradeLevel);
+        card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                chooseGradeLevel();
+            }
+        });
+    });
+}
+
+let currentLanguage = "English";
+
+if (languageBtn) {
+    languageBtn.addEventListener("click", function () {
+        if (currentLanguage === "English") {
+            document.getElementById("welcome").textContent =
+                "Baga Gara Bright School Nagaan Dhuftan";
+            document.querySelector(".hero-content p").textContent =
+                "Barnoota qulqullina qabu egeree ifa ta'eef.";
+            document.querySelector(".about h2").textContent =
+                "Waa'ee Mana Barumsaa Keenya";
+            document.querySelector(".about p").textContent =
+                "Bright School barattoota Sadarkaa 1ffaa fi 2ffaa barnoota qulqullina qabu kenna.";
+            document.querySelector(".programs h2").textContent =
+                "Sagantaalee Barnootaa Keenya";
+            document.querySelectorAll(".card h3")[0].textContent =
+                "Mana Barumsaa Sadarkaa 1ffaa";
+            document.querySelectorAll(".card h3")[1].textContent =
+                "Mana Barumsaa Sadarkaa 2ffaa";
+            document.querySelector(".contact h2").textContent =
+                "Nu Qunnamaa";
+
+            languageBtn.textContent = "English";
+            currentLanguage = "Afaan Oromo";
+        } else {
+            location.reload();
+        }
+    });
+}
+
+let students = [];
+
+if (studentForm && studentList) {
+    try {
+        students = JSON.parse(localStorage.getItem("brightStudents")) || [];
+        if (!Array.isArray(students)) {
+            students = [];
+        }
+    } catch (error) {
+        students = [];
+        localStorage.removeItem("brightStudents");
+    }
+}
+
+function displayStudents(selectedClass = "", selectedGrade = "") {
+    if (studentList) {
+        studentList.innerHTML = "";
+
+        students.forEach((student) => {
+            const div = document.createElement("div");
+            const heading = document.createElement("h3");
+            heading.textContent = student.name || "";
+            div.appendChild(heading);
+
+            const fields = [
+                ["ID", student.id],
+                ["Gender", student.gender],
+                ["Grade", student.grade],
+                ["Class", student.classLevel],
+                ["Parent", student.parent],
+                ["Phone", student.phone],
+                ["Address", student.address]
+            ];
+
+            fields.forEach(([label, value]) => {
+                const paragraph = document.createElement("p");
+                paragraph.textContent = `${label}: ${value || ""}`;
+                div.appendChild(paragraph);
+            });
+
+            studentList.appendChild(div);
+        });
+    }
+
+    displayClassRosters(selectedClass, selectedGrade);
+}
+
+function displayClassRosters(selectedClass = "", selectedGrade = "") {
+    const rosters = {
+        Primary: document.getElementById("primaryRoster"),
+        Secondary: document.getElementById("secondaryRoster")
+    };
+    Object.keys(rosters).forEach((level) => {
+        const roster = rosters[level];
+        if (roster) roster.innerHTML = "";
+    });
+
+    if (!selectedClass || !selectedGrade || !rosters[selectedClass]) return;
+
+    const roster = rosters[selectedClass];
+    const selectedGradeNumber = Number((selectedGrade.match(/\d+/) || [])[0]);
+    const gradeStudents = students.filter((student) => {
+        const studentGradeNumber = Number((String(student.grade || "").match(/\d+/) || [])[0]);
+        const studentClass = student.classLevel ||
+            (studentGradeNumber <= 8 ? "Primary" : "Secondary");
+        return studentClass === selectedClass && studentGradeNumber === selectedGradeNumber;
+    });
+
+    const gradeSection = document.createElement("section");
+    gradeSection.className = "roster-grade";
+    const heading = document.createElement("h4");
+    heading.textContent = selectedGrade;
+    gradeSection.appendChild(heading);
+
+    if (gradeStudents.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.className = "roster-empty";
+        emptyMessage.textContent = `No students registered in ${selectedGrade} yet.`;
+        gradeSection.appendChild(emptyMessage);
+    } else {
+        const list = document.createElement("ul");
+        gradeStudents.forEach((student) => {
+            const item = document.createElement("li");
+            item.textContent = student.name || student.id || "Student";
+            list.appendChild(item);
+        });
+        gradeSection.appendChild(list);
+    }
+
+    roster.appendChild(gradeSection);
+}
+
+document.querySelectorAll(".class-roster").forEach((roster) => {
+    roster.addEventListener("click", (event) => event.stopPropagation());
+});
+
+if (studentForm) {
+    studentForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const student = {
+            id: document.getElementById("studentId").value.trim(),
+            name: document.getElementById("studentName").value.trim(),
+            gender: document.getElementById("gender").value,
+            dob: document.getElementById("dob").value,
+            grade: document.getElementById("grade").value,
+            classLevel: document.getElementById("classLevel").value,
+            parent: document.getElementById("parentName").value.trim(),
+            phone: document.getElementById("phone").value.trim(),
+            address: document.getElementById("address").value.trim()
+        };
+
+        if (students.some((item) =>
+            String(item.id || "").toLowerCase() === student.id.toLowerCase()
+        )) {
+            alert("Student ID already exists!");
+            return;
+        }
+
+        students.push(student);
+        localStorage.setItem("brightStudents", JSON.stringify(students));
+        displayStudents(student.classLevel, student.grade);
+        studentForm.reset();
+        alert("Student registered successfully!");
+    });
+}
+
+displayStudents();
+
